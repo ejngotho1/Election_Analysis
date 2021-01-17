@@ -74,9 +74,34 @@ file_to_save = os.path.join("analysis", "election_analysis.txt")
 with open(file_to_load) as election_data:
 # read file object with reader function
     file_to_read = csv.reader(election_data)
+# lets skip headers
+    headers = next(file_to_read)        
 # lets print each row in the csv file
     for row in file_to_read:
         print(row)    
 # %%
+# DETERMINING TOTAL NUMBER OF VOTES
 
+# add dependencies
+import csv
+import os
+# assign a variable to load file from path (this time an Unknown path)
+file_to_load = os.path.join("Resources", "election_results.csv")
+# assign a variable to save the file to a path
+file_to_save = os.path.join("analysis", "election_analysis.txt")
+
+# Lets initialize total vote COUNTER
+total_votes = 0
+# open election results and read file
+with open(file_to_load) as election_data:
+# read file object with reader function
+    file_to_read = csv.reader(election_data)
+# lets read headers
+    headers = next(file_to_read)        
+# lets print each row in the csv file
+    for row in file_to_read:
+        # Adding to vote counter
+        total_votes += 1
+# print total votes
+print(total_votes)  
 # %%
