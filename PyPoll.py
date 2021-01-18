@@ -97,6 +97,11 @@ candidate_options = []
 # we need a dictionary to append candidate name and votes
 # lets declare an empty dictionary
 candidate_votes = {}
+# winning candidate and winnning count tracker
+winning_candidate = ""
+winning_count = 0
+winning_percentage = 0
+
 # open election results and read file
 with open(file_to_load) as election_data:
 # read file object with reader function
@@ -123,7 +128,8 @@ with open(file_to_load) as election_data:
         # retrieve vote count for each candidate
         votes = candidate_votes[candidate_name]
         # calculate % votes
-        vote_percentage = float(votes) / float(total_votes) * 100    
+        vote_percentage = round(float(votes) / float(total_votes) * 100, 2)   
 # print candidate name and % votes
-print(f"{candidate_name}: received {vote_percentage}% of the vote.")  
+print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+
 # %%
