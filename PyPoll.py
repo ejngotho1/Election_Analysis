@@ -94,6 +94,9 @@ file_to_save = os.path.join("analysis", "election_analysis.txt")
 total_votes = 0
 # lets declare a new list
 candidate_options = []
+# we need a dictionary to append candidate name and votes
+# lets declare an empty dictionary
+candidate_votes = {}
 # open election results and read file
 with open(file_to_load) as election_data:
 # read file object with reader function
@@ -109,7 +112,18 @@ with open(file_to_load) as election_data:
 # lets check if candidate name has been added - unique candidate name 
         if candidate_name not in candidate_options:        
 #  add candidate name to the candidate_options list if not in list
-            candidate_options.append(candidate_name)           
-# print total votes
-print(candidate_options)  
+            candidate_options.append(candidate_name)   
+# lets initiate the dictionary to 0 to track candidate votes
+            candidate_votes[candidate_name] = 0 
+# we will increment the candidate_vote by 1
+        candidate_votes[candidate_name] += 1  
+# lets determine the % of votes for each candidate by looping thru counts
+#  iterate thru candidate list
+    for candidate_name in candidate_votes:
+        # retrieve vote count for each candidate
+        votes = candidate_votes[candidate_name]
+        # calculate % votes
+        vote_percentage = float(votes) / float(total_votes) * 100    
+# print candidate name and % votes
+print(f"{candidate_name}: received {vote_percentage}% of the vote.")  
 # %%
